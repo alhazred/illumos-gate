@@ -70,7 +70,7 @@ LINTFILES=$(SRCS:%.c=%.ln)
 DWARFLDFLAGS	= \
 	-L$(ROOTONBLDLIBMACH) \
 	'-R$$ORIGIN/../../lib/$(MACH)' \
-	-ldwarf
+	-Wl,-z,origin,-rpath=\$$ORIGIN/../../lib/i386 -ldwarf
 DWARFCPPFLAGS	= -I../../dwarf/common
 
 LDFLAGS		+= -L$(NATIVE_ADJUNCT)/lib

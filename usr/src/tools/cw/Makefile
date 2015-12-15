@@ -32,8 +32,8 @@ include ../Makefile.tools
 # Bootstrap problem -- we have to build cw before we can use it
 i386_CC=		$(SPRO_VROOT)/bin/cc
 sparc_CC=		$(SPRO_VROOT)/bin/cc
-$(__GNUC)i386_CC=	$(GCC_ROOT)/bin/gcc
-$(__GNUC)sparc_CC=	$(GCC_ROOT)/bin/gcc
+$(__GNUC)i386_CC=	$(GCC_ROOT)/bin/clang
+$(__GNUC)sparc_CC=	$(GCC_ROOT)/bin/clang
 
 CFLAGS += $(CCVERBOSE)
 

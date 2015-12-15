@@ -320,7 +320,7 @@ typedef enum cw_compiler {
 
 static const char *cmds[] = {
 	"cc", "CC",
-	"gcc", "g++"
+	"clang", "clang++"
 };
 
 static char default_dir[2][MAXPATHLEN] = {
@@ -544,7 +544,7 @@ optim_disable(struct aelist *h, int level)
 {
 	if (level >= 2) {
 		newae(h, "-fno-strict-aliasing");
-		newae(h, "-fno-unit-at-a-time");
+	/*	newae(h, "-fno-unit-at-a-time");*/
 		newae(h, "-fno-optimize-sibling-calls");
 	}
 }
@@ -652,12 +652,11 @@ do_gcc(cw_ictx_t *ctx)
 
 	newae(ctx->i_ae, "-fident");
 	newae(ctx->i_ae, "-finline");
-	newae(ctx->i_ae, "-fno-inline-functions");
 	newae(ctx->i_ae, "-fno-builtin");
 	newae(ctx->i_ae, "-fno-asm");
 	newae(ctx->i_ae, "-fdiagnostics-show-option");
 	newae(ctx->i_ae, "-nodefaultlibs");
-
+/*	newae(ctx->i_ae, "-fno-inline-small-functions");*/
 #if defined(__sparc)
 	/*
 	 * The SPARC ldd and std instructions require 8-byte alignment of
@@ -819,8 +818,30 @@ do_gcc(cw_ictx_t *ctx)
 			}
 			error(arg);
 			break;
-		case 'A':
 		case 'h':
+			{
+				char *opt;
+				size_t len;
+				char *s;
+
+				if (arglen == 1) {
+					opt = *++ctx->i_oldargv;
+					if (opt == NULL || *opt == '\0')
+						error(arg);
+					ctx->i_oldargc--;
+				} else {
+					opt = arg + 2;
+				}
+				len = strlen(opt) + 13;
+				if ((s = malloc(len)) == NULL)
+					nomem();
+				(void) snprintf(s, len, "-Wl,-soname,%s", opt);
+				newae(ctx->i_ae, s);
+				free(s);
+			}
+			break;
+		case 'A':
+/*		case 'h':*/
 		case 'I':
 		case 'i':
 		case 'L':
@@ -1149,7 +1170,7 @@ do_gcc(cw_ictx_t *ctx)
 				break;
 			}
 			if (strcmp(arg, "-Wu,-save_args") == 0) {
-				newae(ctx->i_ae, "-msave-args");
+	/*			newae(ctx->i_ae, "-msave-args");*/
 				break;
 			}
 #endif	/* __x86 */

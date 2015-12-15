@@ -20,7 +20,7 @@ include ../../Makefile.com
 
 LIBS = $(LIBRARY)
 SRCDIR = $(SRC)/cmd/make/lib/bsd
-CPPFLAGS += -D_FILE_OFFSET_BITS=64
+CPPFLAGS += -D_FILE_OFFSET_BITS=64 -_gcc=-Wno-ignored-optimization-argument -_gcc=-Wno-unused-command-line-argument
 
 all: $(LIBS)
 

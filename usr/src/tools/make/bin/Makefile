@@ -38,7 +38,7 @@ include ../Makefile.com
 LDLIBS += ../lib/mksh/libmksh.a ../lib/vroot/libvroot.a
 LDLIBS += ../lib/bsd/libbsd.a -lc -lnsl -lumem
 
-CPPFLAGS += -D_FILE_OFFSET_BITS=64
+CPPFLAGS += -D_FILE_OFFSET_BITS=64 -_gcc=-Wno-parentheses -_gcc=-Wno-unused-command-line-argument -_gcc=-Wno-return-type -_gcc=-Wno-logical-op-parentheses -_gcc=-Wno-switch -_gcc=-Wno-parentheses-equality
 
 ROOTLINKS = $(ROOTONBLDBINMACH)/dmake
 ROOTRULES = $(ROOTONBLDSHARE)/make.rules

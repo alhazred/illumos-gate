@@ -42,7 +42,7 @@ include ../../Makefile.com
 LIBS = $(LIBRARY)
 SRCDIR = $(SRC)/cmd/make/lib/vroot
 MAPFILES=
-CPPFLAGS += -D_FILE_OFFSET_BITS=64
+CPPFLAGS += -D_FILE_OFFSET_BITS=64 -_gcc=-Wno-unused-command-line-argument -_gcc=-Wno-parentheses
 
 all: $(LIBS)
 

@@ -16,5 +16,6 @@ MAKE_INCLUDE= $(SRC)/cmd/make/include
 CC = $(NATIVECC)
 CCC = $(NATIVECCC)
 CFLAGS = $(NATIVE_CFLAGS)
-CFLAGS += $(CCVERBOSE)
+CFLAGS += $(CCVERBOSE) -_gcc=-Wno-ignored-optimization-argument -_gcc=-Wno-unused-command-line-argument
 CPPFLAGS = -I$(MAKE_INCLUDE) $(MAKE_DEFS)
+CERRWARN += -_gcc=-Wno-ignored-optimization-argument

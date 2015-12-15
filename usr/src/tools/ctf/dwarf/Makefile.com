@@ -76,7 +76,6 @@ SRCDIR = ../common/
 CPPFLAGS +=	-I$(SRCDIR) -DELF_TARGET_ALL=1
 CERRWARN +=	-_gcc=-Wno-unused
 CERRWARN +=	-_gcc=-Wno-implicit-function-declaration
-
 LDLIBS = -lelf -lc
 
 .KEEP_STATE:

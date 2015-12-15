@@ -120,7 +120,7 @@ JAVA_HOME=	/usr/java
 # define buildtime JAVA_ROOT
 JAVA_ROOT=	/usr/java
 
-GCC_ROOT=	/opt/gcc/4.4.4
+GCC_ROOT=	/opt/clang-3.7
 GCCLIBDIR=	$(GCC_ROOT)/lib
 GCCLIBDIR64=	$(GCC_ROOT)/lib/$(MACH64)
 
@@ -386,6 +386,15 @@ CERRWARN += -_gcc=-Wno-sign-compare
 CERRWARN += -_gcc=-Wno-unknown-pragmas
 CERRWARN += -_gcc=-Wno-unused-parameter
 CERRWARN += -_gcc=-Wno-missing-field-initializers
+
+# clang
+CERRWARN += -_gcc=-Wno-ignored-optimization-argument
+CERRWARN += -_gcc=-Wno-unused-command-line-argument
+CERRWARN += -_gcc=-Wno-macro-redefined
+CERRWARN += -_gcc=-Wno-tautological-compare
+CERRWARN += -_gcc=-Wno-string-plus-int
+CERRWARN += -_gcc=-Wno-ignored-optimization-argument
+
 
 # Unfortunately, this option can misfire very easily and unfixably.
 CERRWARN +=	-_gcc=-Wno-array-bounds

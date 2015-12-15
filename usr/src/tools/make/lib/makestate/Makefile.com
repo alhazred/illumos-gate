@@ -24,7 +24,7 @@ LIBS = $(DYNLIB)
 SRCDIR = $(SRC)/cmd/make/lib/makestate
 MAPFILES = $(SRCDIR)/mapfile-vers
 LDLIBS += -lc
-
+CPPFLAGS += -_gcc=-Wno-unused-function
 FILEMODE= 755
 
 all: $(LIBS)

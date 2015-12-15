@@ -21,7 +21,7 @@ include ../../Makefile.com
 LIBS = $(LIBRARY)
 SRCDIR = $(SRC)/cmd/make/lib/mksh
 MAPFILES=
-CPPFLAGS += -D_FILE_OFFSET_BITS=64
+CPPFLAGS += -D_FILE_OFFSET_BITS=64 -_gcc=-Wno-unused-command-line-argument -_gcc=-Wno-non-literal-null-conversion -_gcc=-Wno-unused-value
 
 all: $(LIBS)
 
